@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>List of Students</title>
+  <link rel="icon" href="data:,">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("https://images.pexels.com/photos/2767814/pexels-photo-2767814.jpeg?auto=compress&cs=tinysrgb&w=600");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .student-list {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .student-list h2 {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .student-list ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .student-list li {
+      margin-bottom: 10px;
+    }
+
+    .student-list li a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      background-color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .student-list li a:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="student-list">
+    <h2>List of Students</h2>
+    
+    <!-- Add dropdown menu for exam selection -->
+    <div>
+      <label for="exam-select">Select Exam:</label>
+      <select id="exam-select" onchange="changeExam(this.value)">
+        <option value="series1">Series 1</option>
+        <option value="series2">Series 2</option>
+      </select>
+    </div>
+    
+    <ul id="student-links">
+      <li><a href="/questions?exam=series1&student=Joshwa">Joshwa</a></li>
+      <li><a href="/questions?exam=series1&student=Jocelyn">Jocelyn</a></li>
+      <li><a href="/questions?exam=series1&student=Merwin">Merwin</a></li>
+      <li><a href="/questions?exam=series1&student=Ignu">Ignu</a></li>
+    </ul>
+  </div>
+  
+  <script>
+    // Function to dynamically update student links when exam is selected
+    function changeExam(exam) {
+      const studentLinks = document.querySelectorAll('#student-links li a');
+      studentLinks.forEach(link => {
+        const url = new URL(link.href);
+        url.searchParams.set('exam', exam);  // Set new exam parameter
+        link.href = url.href;
+      });
+    }
+
+    // Retain the selected exam after page reload
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedExam = urlParams.get('exam') || 'series1';  // Default to series1
+    document.getElementById('exam-select').value = selectedExam;
+    changeExam(selectedExam);
+  </script>
+</body>
+</html>

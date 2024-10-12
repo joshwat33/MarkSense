@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Image Scanner</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    
+    #video-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    video {
+      width: 80%;
+      max-width: 400px;
+    }
+
+    input[type="file"] {
+      margin: 10px 0;
+    }
+
+    .icon {
+      position: absolute;
+      left: 310px;
+      width: 5%;
+      top: 210px;
+    }
+    .icon1 {
+      position: absolute;
+      left: 35px;
+      width: 5%;
+      top: 210px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <h1>Select an option:</h1>
+
+
+  <!-- Inserted image above the "Open Camera" button -->
+  <img src="https://static.thenounproject.com/png/1647111-200.png" class="icon"
+    style="display: block; margin: 0 auto; max-width: 200px;">
+  <img src="https://static.thenounproject.com/png/10092-200.png" class="icon1">
+  </img>
+  <div id="video-container">
+    <video id="video" autoplay></video>
+  </div>
+
+  <input type="file" accept="image/*" id="file-input">
+
+  <button onclick="openCamera()">Open Camera</button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

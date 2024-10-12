@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Student Registration</title>
+  <link rel="icon" href="data:,">
+
+  <style>
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background-image: url("https://images.pexels.com/photos/2767814/pexels-photo-2767814.jpeg?auto=compress&cs=tinysrgb&w=600.jpg");
+      
+
+      background-size: 100%;
+    }
+
+    .form-container {
+      border: none;
+      padding: 10px;
+      background-color: white;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 5px;
+      
+    }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      text-align: right;
+      margin-right: 4px;
+    }
+
+    .submit-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      background-color: darkgreen;
+      cursor: pointer;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body class="center">
+  <div class="form-container">
+    <form id="student-form" onsubmit="submitForm(event)">
+      <label class="l1" for="name">Name:</label>
+      <input type="text" id="name" required>
+      <br><br>
+      <label class="l1" for="register">Register Number:</label>
+      <input type="text" id="register" required>
+      <br>
+      <div class="submit-button-container">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const registerNumber = document.getElementById('register').value;
+  
+      // Redirect to /students with query parameters
+      window.location.href = `/students?name=${name}&register=${registerNumber}`;
+    }
+  </script>
+  
+</body>
+
+</html>
